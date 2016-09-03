@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="qrcode.js"></script>
+    <script>
+        safari.application.addEventListener("contextmenu", handleContextMenu, false);
+        safari.application.addEventListener("command", performCommand, false);
+        qrcode.callback = qrcodeHandler;
+
+        function handleContextMenu(event) {
+            if (event.userInfo && event.userInfo.element === "IMG") {
+                event.contextMenu.appendContextMenuItem("decode", "Decode QR Code");
+            }
+        }
+
+        function performCommand(event) {
+            if (event.command == "decode" && event.userInfo.element == "IMG") {
+                qrcode.decode(event.userInfo.url)
+            }
+        }
+
+        function qrcodeHandler(data) {
+            var re = /error decoding QR Code/;
+            if (re.test(data)) alert(data);
+            else {
+                safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("qr_helper_qrCode", data);
+            }
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
