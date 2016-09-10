@@ -16,8 +16,6 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>Update From Gallery</key>
-	<true/>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -55,5 +53,9 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update From Gallery</key>
+	<true/>
+	<key>Website</key>
+	<string>http://tylerwowen.github.io/qr_helper/</string>
 </dict>
 </plist>
